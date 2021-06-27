@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../BillingProject/.idea/BillingProject.iml" filepath="$PROJECT_DIR$/../BillingProject/.idea/BillingProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MobileApplicationProject/.idea/MobileApplicationProject.iml" filepath="$PROJECT_DIR$/../MobileApplicationProject/.idea/MobileApplicationProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/propertysellapp.iml" filepath="$PROJECT_DIR$/.idea/propertysellapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../propsell/.idea/propsell.iml" filepath="$PROJECT_DIR$/../propsell/.idea/propsell.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../restbank/.idea/restbank.iml" filepath="$PROJECT_DIR$/../restbank/.idea/restbank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../restbook/.idea/restbook.iml" filepath="$PROJECT_DIR$/../restbook/.idea/restbook.iml" />
+    </modules>
+  </component>
+</project>
