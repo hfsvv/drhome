@@ -6,7 +6,7 @@ from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import login, logout, authenticate
-from .models import Userinfo,Property
+from .models import Userinfo,Property,Propertys
 from .decorators import adminonly,adminonly3,adminonly2
 
 from.serializers import RegisterUserSerializer,LoginSerializer,PropSerializer
@@ -75,7 +75,7 @@ class userdel(APIView):
     permission_classes = [permissions.IsAdminUser]
     def delete(self,request,uname):
         user=Userinfo.objects.get(username=uname)
-        ads=Property.objects.filter(uname=uname)
+        ads=Propertys.objects.filter(uname=uname)
         user.delete()
         ads.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -93,7 +93,7 @@ class PropertyView(APIView):
             return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
     def get(self,request,uname):
-        prop=Property.objects.filter(uname=uname)
+        prop=Propertys.objects.filter(uname=uname)
         serializer=PropSerializer(prop,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
 
@@ -101,7 +101,7 @@ class APropertyViewEdit(APIView):
     # authentication_classes = [TokenAuthentication]
     # permission_classes = [permissions.IsAuthenticated]
     def get(self, request, id):
-        prop = Property.objects.filter(id=id)
+        prop = Propertys.objects.filter(id=id)
         serializer = PropSerializer(prop,many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -110,12 +110,12 @@ class PropertyViewEdit(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     def get(self, request, id):
-        prop = Property.objects.filter(id=id)
+        prop = Propertys.objects.filter(id=id)
         serializer = PropSerializer(prop,many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, id):
-        prop = Property.objects.get(id=id)
+        prop = Propertys.objects.get(id=id)
         serializer = PropSerializer(prop, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -124,12 +124,12 @@ class PropertyViewEdit(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id):
-        prop=Property.objects.get(id=id)
+        prop=Propertys.objects.get(id=id)
         prop.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 class PropertyViewCity(APIView):
     def get(self, request, city):
-        prop = Property.objects.filter(city=city)
+        prop = Propertys.objects.filter(city=city)
         serializer = PropSerializer(prop,many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -137,7 +137,7 @@ class PropertyHome(APIView):
     # authentication_classes = [TokenAuthentication]
     # permission_classes = [permissions.IsAuthenticated]
     def get(self, request):
-        prop = Property.objects.all()
+        prop = Propertys.objects.all()
         serializer = PropSerializer(prop,many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 # @method_decorator(adminonly,name='dispatch')
@@ -145,7 +145,7 @@ class APropdel(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [permissions.IsAdminUser]
     def delete(self, request, id):
-        prop=Property.objects.get(id=id)
+        prop=Propertys.objects.get(id=id)
         prop.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 # @method_decorator(adminonly2,name='dispatch')
@@ -153,7 +153,7 @@ class APropertyHome(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [permissions.IsAdminUser]
     def get(self, request):
-        prop = Property.objects.all()
+        prop = Propertys.objects.all()
         serializer = PropSerializer(prop,many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

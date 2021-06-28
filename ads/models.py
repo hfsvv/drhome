@@ -101,3 +101,31 @@ class Property(models.Model):
 #     time=models.TimeField(auto_now=True)
 #     title=models.CharField(max_length=50)
 #     description=models.CharField(max_length=200)
+
+class Propertys(models.Model):
+    uname=models.CharField(max_length=20)
+    title=models.CharField(max_length=200)
+    address=models.CharField(max_length=200)
+    city=models.CharField(max_length=100)
+    state=models.CharField(max_length=100)
+    mobno=models.CharField(max_length=12)
+    whtspno=models.CharField(max_length=12)
+    description=models.TextField(blank=True)
+    price=models.IntegerField()
+    bedrooms=models.IntegerField(default=0)
+    bathrooms = models.IntegerField(default=0)
+    sqft=models.IntegerField(blank=True)
+    list_date=models.DateTimeField(auto_now=True)
+    photo_main=models.ImageField(upload_to='images',blank=True)
+    photo1 = models.ImageField(upload_to='images',blank=True)
+    photo2 = models.ImageField(upload_to='images', blank=True)
+    choices = [
+            ("published","published"),
+            ("blocked","blocked"),
+
+        ]
+    status=models.CharField(choices=choices,default="published",max_length=20)
+
+    def __str__(self):
+        return self.title
+

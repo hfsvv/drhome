@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
-from .models import Userinfo,Property
+from .models import Userinfo,Property,Propertys
 from rest_framework import serializers
 
 class RegisterUserSerializer(ModelSerializer):
@@ -15,5 +15,5 @@ class LoginSerializer(serializers.Serializer):
 
 class PropSerializer(ModelSerializer):
     class Meta:
-        model=Property
+        model=Propertys
         fields="__all__"
