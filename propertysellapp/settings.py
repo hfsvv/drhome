@@ -145,5 +145,9 @@ django_heroku.settings(locals())
 #     os.path.join(BASE_DIR,'static')
 # ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AUTH_USER_MODEL="ads.Userinfo"
+AWS_ACCESS_KEY_ID="AKIAVED5BVXLCIKM7HVY"
+AWS_SECRET_ACCESS_KEY="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"
+AWS_STORAGE_BUCKET_NAME="dreamhomesstr"
+AWS_QUERYSTRING_AUTH=False
