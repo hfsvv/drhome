@@ -144,8 +144,8 @@ django_heroku.settings(locals())
 # STATICFILES_DIRS=[
 #     os.path.join(BASE_DIR,'static')
 # ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3ManifestStaticStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3ManifestStaticStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AUTH_USER_MODEL="ads.Userinfo"
 AWS_ACCESS_KEY_ID="AKIAVED5BVXLCIKM7HVY"
