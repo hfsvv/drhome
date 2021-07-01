@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -128,7 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 # Stati
 # STATIC_ROOT=os.path.join(BASE_DIR,'images')
-STATIC_URL = '/static/'
+
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #
 # # Static files (CSS, JavaScript, Images)
@@ -140,15 +140,19 @@ STATIC_URL = '/static/'
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
 # )
-django_heroku.settings(locals())
+django_heroku.settings(locals(),staticfiles=False)
 # STATICFILES_DIRS=[
 #     os.path.join(BASE_DIR,'static')
 # ]
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3ManifestStaticStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 AUTH_USER_MODEL="ads.Userinfo"
+AWS_URL="https://dreamhomesstr.s3.amazonaws.com/"
 AWS_ACCESS_KEY_ID="AKIAVED5BVXLCIKM7HVY"
 AWS_SECRET_ACCESS_KEY="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"
 AWS_STORAGE_BUCKET_NAME="dreamhomesstr"
 AWS_QUERYSTRING_AUTH=False
+AWS_S3_FILE_OVERWRITE=False
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = AWS_URL+'/static/'
