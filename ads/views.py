@@ -186,4 +186,11 @@ class useredit(APIView):
         prop.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+class userid(APIView):
+    def get(self,request,id):
+        us=Userinfo.objects.get(id=id)
+        serializer = RegisterUserSerializer(us)
+        return Response(us.prof_pic, status=status.HTTP_200_OK)
+
+
 

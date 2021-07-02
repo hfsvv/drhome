@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import Loginuser,APropertyHome,APropdel,LoginAdminuser,APropertyViewEdit,registeruser,UserProf,PropertyViewCity,userdel,PropertyView,PropertyViewEdit,PropertyHome,userview,useredit
+from .views import Loginuser,userid,APropertyHome,APropdel,LoginAdminuser,APropertyViewEdit,registeruser,UserProf,PropertyViewCity,userdel,PropertyView,PropertyViewEdit,PropertyHome,userview,useredit
 
 urlpatterns = [
     path('login',Loginuser.as_view()),
@@ -31,6 +31,7 @@ urlpatterns = [
     path('useredit',useredit.as_view()),
     path('loginadmin',LoginAdminuser.as_view()),
     path('userdel/<str:uname>',userdel.as_view()),
-    path('postcity/<str:city>',PropertyViewCity.as_view())
+    path('postcity/<str:city>',PropertyViewCity.as_view()),
+    path('u/<int:id>',userid.as_view())
 
 ]
